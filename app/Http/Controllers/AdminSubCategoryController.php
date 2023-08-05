@@ -9,16 +9,8 @@ class AdminSubCategoryController extends Controller
 {
     public function index()
     {
-        /*$data = SubCategory::join('categories','categories.id','=','sub_categories.category_id')
-                ->select('sub_categories.*', 'categories.category_name as category_name')
-                ->get();*/
-        /*$data = DB::table('sub_categories')
-            ->select('sub_categories.*', 'categories.category_name as category_name')
-            ->join('categories', 'categories.id', '=', 'sub_categories.category_id')
-            ->get();*/
-        $data =  SubCategory::with('category')->get();
-        /*dd($data);*/
-        $data_category = Category::all();
+        $data =  SubCategory::with(['category' => function ($query) {$query->orderBy('level', 'asc');}])->get();
+        $data_category = Category::orderBy('categories.level', 'asc')->get();
         return view('admin.subcategory.index',compact('data','data_category'));
     }
 
@@ -44,4 +36,5 @@ class AdminSubCategoryController extends Controller
         $data->delete();
         return redirect()->back()->with('message','SubCategory deleted successfully');
     }
+
 }

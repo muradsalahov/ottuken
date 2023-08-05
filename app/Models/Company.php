@@ -15,5 +15,10 @@ class Company extends Model
         'favicon'
     ];
 
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public $timestamps = true;
 }
