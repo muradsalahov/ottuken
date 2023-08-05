@@ -111,13 +111,16 @@
                     <li id='company'><a href="{{url('/admin_company')}}" aria-expanded="false"><i class="fa fa-building-o"></i><span
                                 class="nav-text">Company</span></a>
                     </li>
+                    <li id='category'><a href="{{url('/admin_brand')}}" aria-expanded="false"><i class="fa fa-copyright"></i><span
+                                class="nav-text">Brands</span></a>
+                    </li>
                     <li id='category'><a href="{{url('/admin_category')}}" aria-expanded="false"><i class="fa fa-shopping-cart"></i><span
                                 class="nav-text">Category</span></a>
                     </li>
                     <li id='sub_company'><a href="{{url('/admin_subcategory')}}" aria-expanded="false"><i class="fa fa-shopping-cart"></i><span
                                 class="nav-text">Sub Category</span></a>
                     </li>
-                    <li id='product'><a href="widget-basic.html" aria-expanded="false"><i class="fa fa-product-hunt"></i><span
+                    <li id='product'><a href="{{url('/admin_product')}}" aria-expanded="false"><i class="fa fa-product-hunt"></i><span
                                 class="nav-text">Product</span></a>
                     </li>
                     <li id='users'><a href="{{ url('/admin_users') }}" aria-expanded="false"><i class="fa fa-user"></i><span

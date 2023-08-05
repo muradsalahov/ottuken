@@ -5,24 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SubCategory extends Model
+class ProductDocs extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'subcategory_name',
-        'category_id',
-        'level'
+        'product_doc_name',
+        'product_id'
     ];
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
-    }
 
     public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     public $timestamps = true;

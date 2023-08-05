@@ -23,12 +23,14 @@ class AdminCompanyController extends Controller
     {
         $input = $request->all();
         if($file = $request->file('photo')){
-            $name = time() . $file->getClientOriginalName();
+            $etc =  substr(($file->getClientOriginalName()), -4);
+            $name = time() . $request->company_name.$etc;
             $file->move(public_path() . '/assets_admin/company_image', $name);
             $input['photo'] = $name;
         }
         if($file = $request->file('favicon')){
-            $name = time() . $file->getClientOriginalName();
+            $etc =  substr(($file->getClientOriginalName()), -4);
+            $name = time() . '_favicon_' . $request->company_name.$etc;
             $file->move(public_path() . '/assets_admin/company_image', $name);
             $input['favicon'] = $name;
         }
@@ -51,7 +53,8 @@ class AdminCompanyController extends Controller
             if (file_exists(public_path() . '/assets_admin/company_image/' . $data->photo)) {
                 unlink(public_path() . "/assets_admin/company_image/" . $data->photo);
             }
-            $name = time() . $file->getClientOriginalName();
+            $etc =  substr(($file->getClientOriginalName()), -4);
+            $name = time() . $data->company_name.$etc;
             $file->move(public_path() . '/assets_admin/company_image', $name);
             $input['photo'] = $name;
         }
@@ -59,7 +62,8 @@ class AdminCompanyController extends Controller
             if (file_exists(public_path() . '/assets_admin/company_image/' . $data->favicon)) {
                 unlink(public_path() . "/assets_admin/company_image/" . $data->favicon);
             }
-            $name = time() . $file->getClientOriginalName();
+            $etc =  substr(($file->getClientOriginalName()), -4);
+            $name = time() . '_favicon_' . $data->company_name.$etc;
             $file->move(public_path() . '/assets_admin/company_image', $name);
             $input['favicon'] = $name;
         }

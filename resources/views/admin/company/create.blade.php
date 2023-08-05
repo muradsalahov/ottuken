@@ -5,7 +5,7 @@
 <div class="content-body">
     <div class="container-fluid">
         @if(session()->has('message'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" style="color: #454545;background-color: #6aff6a;">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
             {{session()->get('message')}}
         </div>
